@@ -34,5 +34,3 @@ In future iterations, consider incorporating additional features such as:
 - Profile management for registered users.
 - Email verification for enhanced security.
 - Integration with external APIs for extended functionality.
-
-Feel free to reach out for any further information or if you have suggestions for improvement.
