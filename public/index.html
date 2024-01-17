@@ -1,70 +1,3 @@
-<!-- index.html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-mod-3"></div>
-            <div class="col-md-6 main">
-                <form action="/sign_up" method="POST" onsubmit="return showSuccessAlert();">
-                    <h2>Registration Form</h2>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" class="box" placeholder="Enter your name" required>
-                    <br>
-
-                    <label for="age">Age:</label>
-                    <input type="text" id="age" name="age" class="box" placeholder="Enter your age" required>
-                    <br>
-
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" class="box" placeholder="Enter your email" required>
-                    <br>
-
-                    <label for="phno">Phone Number:</label>
-                    <input type="text" id="phno" name="phno" class="box" placeholder="Enter your phone number" required>
-                    <br>
-
-                    <label for="gender">Gender:</label>
-                    <input type="text" id="gender" name="gender" class="box" placeholder="Enter your gender" required>
-                    <br>
-
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" class="box" placeholder="Enter your password" required>
-                    <br>
-
-                    <input type="submit" value="Submit" class="submit-btn">
-                </form>
-
-                <p>Already have an account? <a href="/login.html">Login here</a></p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function showSuccessAlert() {
-            // Check if the email input is empty
-            const emailInput = document.getElementById('email');
-            if (!emailInput.value.trim()) {
-                alert("Email cannot be empty!");
-                return false; // Prevent form submission
-            }
-
-            // Email input is not empty, allow form submission
-            return true;
-        }
-    </script>
-</body>
-</html> -->
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,21 +14,21 @@
                 <form action="/sign_up" method="POST" onsubmit="return validateForm();">
                     <h2>Registration Form</h2>
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" class="box" placeholder="Enter your name" required>
+                    <input type="text" id="name" name="name" class="box" placeholder="Enter your name" autocomplete="off" required>
                     <br>
 
                     <label for="age">Age:</label>
-                    <input type="number" id="age" name="age" class="box" placeholder="Enter your age" required>
+                    <input type="number" id="age" name="age" class="box" placeholder="Enter your age" autocomplete="off" required>
                     <span id="ageError" class="error"></span>
                     <br>
 
                     <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" class="box" placeholder="Enter your email" required>
+                    <input type="text" id="email" name="email" class="box" placeholder="Enter your email" autocomplete="off" required>
                     <br>
 
                     <!-- Update the Phone Number input -->
                     <label for="phno">Phone Number:</label>
-                    <input type="text" id="phno" name="phno" class="box" placeholder="Enter your phone number" pattern="[0-9]+" required>
+                    <input type="text" id="phno" name="phno" class="box" placeholder="Enter your phone number" autocomplete="off" pattern="[0-9]+" required>
                     <span id="phnoError" class="error"></span>
                     <br>
 
