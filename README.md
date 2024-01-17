@@ -1,5 +1,3 @@
-Certainly! Here's an expanded overview for your registration form project:
-
 # REGISTRATION FORM
 
 This is a comprehensive REGISTRATION FORM website that I developed during the Bharat internship. The project is designed to facilitate user registration with a user-friendly interface and robust backend functionality.
