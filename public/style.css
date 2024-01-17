@@ -1,0 +1,59 @@
+/* style.css */
+
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.main {
+    max-width: 450px; /* Adjusted max-width */
+    margin: auto; /* Center the form */
+    padding: 10px;
+    background: linear-gradient(to bottom right, #3494E6, #EC6EAD);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin: 8px 0;
+    color: #ffffff;
+}
+
+.box {
+    width: 100%; /* Adjusted width to 100% */
+    padding: 10px; /* Adjusted padding */
+    font-size: 14px;
+    border: none; /* Removed border to match other text boxes */
+    border-radius: 5px;
+    margin-bottom: 8px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-sizing: border-box; /* Added box-sizing to include padding in the width */
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to right, #FF416C, #FF4B2B);
+    border: none;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+}

@@ -1,0 +1,170 @@
+<!-- index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-mod-3"></div>
+            <div class="col-md-6 main">
+                <form action="/sign_up" method="POST" onsubmit="return showSuccessAlert();">
+                    <h2>Registration Form</h2>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="box" placeholder="Enter your name" required>
+                    <br>
+
+                    <label for="age">Age:</label>
+                    <input type="text" id="age" name="age" class="box" placeholder="Enter your age" required>
+                    <br>
+
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" class="box" placeholder="Enter your email" required>
+                    <br>
+
+                    <label for="phno">Phone Number:</label>
+                    <input type="text" id="phno" name="phno" class="box" placeholder="Enter your phone number" required>
+                    <br>
+
+                    <label for="gender">Gender:</label>
+                    <input type="text" id="gender" name="gender" class="box" placeholder="Enter your gender" required>
+                    <br>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="box" placeholder="Enter your password" required>
+                    <br>
+
+                    <input type="submit" value="Submit" class="submit-btn">
+                </form>
+
+                <p>Already have an account? <a href="/login.html">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSuccessAlert() {
+            // Check if the email input is empty
+            const emailInput = document.getElementById('email');
+            if (!emailInput.value.trim()) {
+                alert("Email cannot be empty!");
+                return false; // Prevent form submission
+            }
+
+            // Email input is not empty, allow form submission
+            return true;
+        }
+    </script>
+</body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 main">
+                <form action="/sign_up" method="POST" onsubmit="return validateForm();">
+                    <h2>Registration Form</h2>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="box" placeholder="Enter your name" required>
+                    <br>
+
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" class="box" placeholder="Enter your age" required>
+                    <span id="ageError" class="error"></span>
+                    <br>
+
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" class="box" placeholder="Enter your email" required>
+                    <br>
+
+                    <!-- Update the Phone Number input -->
+                    <label for="phno">Phone Number:</label>
+                    <input type="text" id="phno" name="phno" class="box" placeholder="Enter your phone number" pattern="[0-9]+" required>
+                    <span id="phnoError" class="error"></span>
+                    <br>
+
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" class="box" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Cannot determine">Cannot determine</option>
+                    </select>
+                    <br>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="box" placeholder="Enter your password" required>
+                    <span id="passwordError" class="error"></span>
+                    <br>
+
+                    <input type="submit" value="Submit" class="submit-btn">
+                </form>
+
+                <p>Already have an account? <a href="/login.html">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Validate Age (should be a number greater than 0)
+            var ageInput = document.getElementById('age');
+            var ageError = document.getElementById('ageError');
+            var ageValue = parseInt(ageInput.value, 10);
+    
+            if (isNaN(ageValue) || ageValue <= 0) {
+                ageError.textContent = 'Age must be a valid number greater than 0.';
+                return false;
+            } else {
+                ageError.textContent = '';
+            }
+    
+            // Validate Phone Number (should be a number)
+            var phnoInput = document.getElementById('phno');
+            var phnoError = document.getElementById('phnoError');
+            var phnoValue = phnoInput.value.trim();
+    
+            if (!/^\d+$/.test(phnoValue)) {
+                phnoError.textContent = 'Phone Number must be a valid number.';
+                return false;
+            } else {
+                phnoError.textContent = '';
+            }
+    
+            // Validate Password complexity
+            var passwordInput = document.getElementById('password');
+            var passwordError = document.getElementById('passwordError');
+            var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    
+            if (!passwordRegex.test(passwordInput.value)) {
+                passwordError.innerHTML = 'Password must contain at least:<ul>' +
+                        '<li>1 capital letter</li>' +
+                        '<li>1 small letter</li>' +
+                        '<li>1 number</li>' +
+                        '<li>1 special character</li></ul>';
+                return false;
+            } else {
+                passwordError.textContent = '';
+            }
+    
+            return true;
+        }
+    </script>
+</body>
+</html>

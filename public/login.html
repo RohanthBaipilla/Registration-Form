@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 main">
+                <!-- Display success or error messages -->
+                <!-- <% if (success) { %>
+                    <div class="alert alert-success" role="alert">
+                        <%= success %>
+                    </div>
+                <% } else if (error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %> -->
+
+                <form action="/login" method="POST">
+                    <h2>Login Form</h2>
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" class="box" placeholder="Enter your email" required>
+                    <br>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="box" placeholder="Enter your password" required>
+                    <br>
+
+                    <input type="submit" value="Login" class="submit-btn">
+                </form>
+                
+                <p>Don't have an account? <a href="/index.html">Create here</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
