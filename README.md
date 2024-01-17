@@ -25,7 +25,8 @@ Explore the live demo [here](https://rohanth-registration-form.onrender.com). Tr
 
 ## Deployment
 
-The project is successfully deployed and accessible at [https://rohanth-registration-form.onrender.com](https://rohanth-registration-form.onrender.com). The deployment on Render ensures high availability and efficient performance.
+The project is successfully deployed and accessible at [https://rohanth-registration-form.onrender.com](https://rohanth-registration-form.onrender.com). 
+The deployment on Render ensures high availability and efficient performance.
 
 ## Future Enhancements
 
