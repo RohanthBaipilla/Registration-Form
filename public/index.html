@@ -24,6 +24,7 @@
 
                     <label for="email">Email:</label>
                     <input type="text" id="email" name="email" class="box" placeholder="Enter your email" autocomplete="off" required>
+                    <span id="emailError" class="error"></span>
                     <br>
 
                     <!-- Update the Phone Number input -->
@@ -78,6 +79,19 @@
                 return false;
             } else {
                 phnoError.textContent = '';
+            }
+
+            // Validate Email
+            var emailInput = document.getElementById('email');
+            var emailError = document.getElementById('emailError');
+            var emailValue = emailInput.value.trim();
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(emailValue)) {
+                emailError.textContent = 'Enter a valid email address.';
+                return false;
+            } else {
+                emailError.textContent = '';
             }
     
             // Validate Password complexity
