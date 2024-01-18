@@ -22,10 +22,11 @@
                     </div>
                 <% } %> -->
 
-                <form action="/login" method="POST">
+                <form action="/login" method="POST" onsubmit="return validateLoginForm();">
                     <h2>Login Form</h2>
                     <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" class="box" placeholder="Enter your email" required>
+                    <input type="text" id="email" name="email" class="box" placeholder="Enter your email" autocomplete="off" required>
+                    <span id="emailError" class="error"></span>
                     <br>
 
                     <label for="password">Password:</label>
@@ -39,5 +40,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function validateLoginForm() {
+            // Validate Email
+            var emailInput = document.getElementById('email');
+            var emailError = document.getElementById('emailError');
+            var emailValue = emailInput.value.trim();
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(emailValue)) {
+                emailError.textContent = 'Enter a valid email address.';
+                return false;
+            } else {
+                emailError.textContent = '';
+            }
+    
+            return true;
+        }
+    </script>
 </body>
 </html>
