@@ -1,89 +1,70 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <style>
-    .card-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh; /* Adjust this if needed */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #fff; 
+        }
 
-    .card {
-      position: relative;
-      min-width: 190px; /* Minimum width */
-      max-width: 400px; /* Maximum width */
-      background-color: #000;
-      display: flex;
-      flex-direction: column;
-      justify-content: end;
-      padding: 12px;
-      gap: 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      color: white;
-      transition: all 0.3s ease; /* Added transition for smooth resizing */
-    }
+        .container {
+            text-align: center;
+            color: #fff; 
+            padding: 20px;
+            border-radius: 10px; 
+            background: linear-gradient(to right, #8eff86, rgb(4, 255, 50)); 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
 
-    .card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      left: -5px;
-      margin: auto;
-      width: 100%; /* Full width */
-      height: 100%;
-      border-radius: 10px;
-      background: linear-gradient(-45deg, #7cfd7c 0%, #67ff67 100%);
-      z-index: -10;
-      pointer-events: none;
-      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
+        .logout-button {
+            background-color: #33cfff;
+            color: #000000; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background-color 0.3s;
+            text-decoration: none; 
+        }
 
-    .card::after {
-      content: "";
-      z-index: -1;
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(-45deg, #7cfd7c 0%, #67ff67 100%);
-      transform: translate3d(0, 0, 0) scale(0.95);
-      filter: blur(20px);
-    }
-
-    .heading {
-      font-size: 20px;
-      color: #02ff46;
-      font-weight: 700;
-    }
-
-    .card p:not(.heading) {
-      font-size: 14px;
-    }
-
-    .card p:last-child {
-      color: #2ce65e;
-      font-weight: 600;
-    }
-
-    
-  </style>
+        .logout-button:hover {
+            background-color: #d63022; 
+            color: #ffffff;
+            
+        }
+    </style>
 </head>
 <body>
-  <div class="card-container">
-    <div class="card">
-      <h1 class="heading">
-        <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center>Successfully Logged in</center>
-      </h1>
-      
-        <center><p>Account created successfully</p></center>
-        <br>
+    <div class="container">
+        <font color="black">
+            <h1>Successfully logged in</h1>
+            <p>Welcome, <b><span id="userName"></span>!</b></p>
+            <br>
+            <a href="/" class="logout-button">Logout</a>
+        </font>
     </div>
-  </div>
+
+    <script>
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        var userName = getParameterByName('name');
+        document.getElementById('userName').innerText = userName;
+    </script>
 </body>
 </html>
