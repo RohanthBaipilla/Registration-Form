@@ -7,10 +7,9 @@ require('dotenv').config();
 const app = express();
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.json());
+app.use(bodyParser.json(    ));
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
@@ -26,7 +25,7 @@ const connectWithRetry = () => {
     })
     .catch((err) => {
         console.error("Error in connecting to Database. Retrying...");
-        setTimeout(connectWithRetry, 5000); // Retry after 5 seconds
+        setTimeout(connectWithRetry, 5000);
     });
 };
 
@@ -47,15 +46,12 @@ app.post("/sign_up", async (req, res) => {
     try {
         const { name, age, email, phno, gender, password } = req.body;
 
-        // Check if the email already exists in the database
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
-            // Email already exists, redirect to a page indicating that the account couldn't be created
             return res.redirect('/account_exists.html');
         }
 
-        // Validate Password complexity on the server-side
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
         if (!passwordRegex.test(password)) {
@@ -76,7 +72,8 @@ app.post("/sign_up", async (req, res) => {
         console.log("Record Inserted Successfully");
 
         return res.redirect(`/login.html`);
-    } catch (err) {
+    }
+    catch (err) {
         console.error(err);
         res.status(500).send("Internal Server Error");
     }
@@ -89,14 +86,11 @@ app.post("/login", async (req, res) => {
         const existingUser = await User.findOne({ email });
 
         if (!existingUser) {
-            // User not found, display an alert message on the login form
             return res.send('<script>alert("User not found"); window.location.href = "/login.html";</script>');
         }
 
-        // Compare plain password
         if (password === existingUser.password) {
-            // Redirect to home page on successful login
-            return res.redirect(`/home.html`);
+            return res.redirect(`/home.html?name=${encodeURIComponent(existingUser.name)}`);
         } else {
             return res.send('<script>alert("Wrong password"); window.location.href = "/login.html";</script>');
         }
